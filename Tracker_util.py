@@ -13,7 +13,6 @@ parent_dir = config_data['parent-dir']
 
 def write_playlist(link, user, file):
     today = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M')
-    # file = open(f"C:\\Users\\AlaaZme1\\PycharmProjects\\Mini_Games_flask\\playlists\\{user}-{today}", "w")
     driver2 = webdriver.Chrome()
     driver2.get(f'https://www.youtube.com/{link}')
     sleep(5)
