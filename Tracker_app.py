@@ -3,7 +3,6 @@ import yaml
 from selenium import webdriver
 from datetime import datetime
 
-
 with open("config.yaml", "r") as f:
     config_data = yaml.safe_load(f)
 
