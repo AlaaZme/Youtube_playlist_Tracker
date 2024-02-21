@@ -1,0 +1,12 @@
+gmail-sender: "smtp sender mail"
+
+gmail-sender-pass: "enter mail special pass for GMAIL account"
+
+gmail-receiver: "Enter Target Email for update"
+
+parent-dir: "Enter directory to manage playlist"
+
+user_list:
+  - user_name1
+  - user_name2
+  - user_name3
