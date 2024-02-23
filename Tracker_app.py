@@ -11,5 +11,5 @@ for user_name in user_names:
 
 for thread in threads:
     thread.join()
-    if not thread.is_alive():
+    if thread.is_alive():
         print(thread.is_alive())

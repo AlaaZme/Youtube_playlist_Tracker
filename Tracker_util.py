@@ -27,10 +27,6 @@ def user_iteration(user):
         t = threading.Thread(target=parse_details, args=(detail,user,))
         t.start()
         threads.append(t)
-    for thread in threads:
-        thread.join()
-        if not thread.is_alive():
-            print(thread.is_alive())
 
 
 def parse_details(detail,user):

@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="908eafa8-d3a4-4331-a5ae-56eaa6335d2e" name="Changes" comment="nothing much">
+    <list default="true" id="908eafa8-d3a4-4331-a5ae-56eaa6335d2e" name="Changes" comment="threading">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tracker_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tracker_app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tracker_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tracker_util.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,14 +52,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.Tracker_app.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Dev1&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Tracker_app.executor": "Run",
+    "Python.Tracker_util.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Dev1"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Tracker_app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Youtube_playlist_tracker" />
@@ -163,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708727944974</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="threading">
+      <option name="closed" value="true" />
+      <created>1708728559140</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1708728559140</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -171,7 +181,8 @@
     <MESSAGE value="initial commit" />
     <MESSAGE value="fix" />
     <MESSAGE value="nothing much" />
-    <option name="LAST_COMMIT_MESSAGE" value="nothing much" />
+    <MESSAGE value="threading" />
+    <option name="LAST_COMMIT_MESSAGE" value="threading" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
