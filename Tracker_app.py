@@ -1,10 +1,8 @@
 import Tracker_util
-import yaml
 import threading
 
 user_names = Tracker_util.get_config_users("user_list")
 threads = []
-
 
 for user_name in user_names:
     t = threading.Thread(target=Tracker_util.user_iteration, args=(user_name,))
