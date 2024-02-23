@@ -4,6 +4,7 @@ from time import sleep
 from datetime import datetime
 import mail_gmail
 import yaml
+import threading
 
 
 def get_config_users(data):
@@ -12,37 +13,45 @@ def get_config_users(data):
     return config_data[data]
 
 
-
 parent_dir = get_config_users('parent-dir')
 
-
 today = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M')
-def user_iteration(user):
 
-    new_user = is_new_user(user)
+
+def user_iteration(user):
+    threads = []
     driver = webdriver.Chrome()
     driver.get(f'https://www.youtube.com/@{user}/playlists')
     details = driver.find_elements(by="id", value="details")
-
     for detail in details:
-        line = detail.get_attribute("innerHTML").find("Updated")
-        x = (detail.get_attribute("innerHTML")[152:252]).split("\" ")
-        playlist_name = x[0]
-        href = x[1].split(";pp")
-        link = (href[0][6:]).replace('amp;', '').replace('amp', '')
+        t = threading.Thread(target=parse_details, args=(detail,user,))
+        t.start()
+        threads.append(t)
+    for thread in threads:
+        thread.join()
+        if not thread.is_alive():
+            print(thread.is_alive())
 
-        if new_user:
-            with open(f"{parent_dir}\\{user}\\{playlist_name}_{today}", "w", encoding="utf-8") as file1:
-                write_playlist(link, user, file1)
 
-        elif line != -1:
-            with open(f"{parent_dir}\\{user}\\{playlist_name}_{today}_diff", "w", encoding="utf-8") as file2:
-                write_playlist(link, user, file2)
-                file2.close()
-            manage_playlist(user, playlist_name)
+def parse_details(detail,user):
+    new_user = is_new_user(user)
+    line = detail.get_attribute("innerHTML").find("Updated")
+    x = (detail.get_attribute("innerHTML")[152:252]).split("\" ")
+    playlist_name = x[0]
+    href = x[1].split(";pp")
+    link = (href[0][6:]).replace('amp;', '').replace('amp', '')
 
-        else:
-            pass
+    if new_user:
+        with open(f"{parent_dir}\\{user}\\{playlist_name}_{today}", "w", encoding="utf-8") as file1:
+            write_playlist(link, user, file1)
+
+    elif line != -1:
+        with open(f"{parent_dir}\\{user}\\{playlist_name}_{today}_diff", "w", encoding="utf-8") as file2:
+            write_playlist(link, user, file2)
+            file2.close()
+        manage_playlist(user, playlist_name)
+
+
 def write_playlist(link, user, file):
     today = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M')
     driver2 = webdriver.Chrome()
