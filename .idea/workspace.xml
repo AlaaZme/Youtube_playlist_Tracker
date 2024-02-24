@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="908eafa8-d3a4-4331-a5ae-56eaa6335d2e" name="Changes" comment="Merge branch 'pool_exec' into Dev1&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Tracker_app.py&#10;#&#9;Tracker_util.py" />
+    <list default="true" id="908eafa8-d3a4-4331-a5ae-56eaa6335d2e" name="Changes" comment="ThreadPoolExecutor">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tracker_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tracker_app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tracker_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tracker_util.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="pool_exec" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -48,15 +53,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.Tracker_app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.Tracker_util.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Dev1&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Tracker_app.executor": "Run",
+    "Python.Tracker_util.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Dev1"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Tracker_app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Youtube_playlist_tracker" />
@@ -177,13 +182,13 @@
       <option name="project" value="LOCAL" />
       <updated>1708730090730</updated>
     </task>
-    <task id="LOCAL-00011" summary="Merge branch 'pool_exec' into Dev1&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Tracker_app.py&#10;#&#9;Tracker_util.py">
+    <task id="LOCAL-00011" summary="ThreadPoolExecutor">
       <option name="closed" value="true" />
-      <created>1708778387809</created>
+      <created>1708768127642</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1708778387809</updated>
+      <updated>1708768127642</updated>
     </task>
     <option name="localTasksCounter" value="12" />
     <servers />
@@ -195,8 +200,7 @@
     <MESSAGE value="nothing much" />
     <MESSAGE value="threading" />
     <MESSAGE value="ThreadPoolExecutor" />
-    <MESSAGE value="Merge branch 'pool_exec' into Dev1&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Tracker_app.py&#10;#&#9;Tracker_util.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'pool_exec' into Dev1&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Tracker_app.py&#10;#&#9;Tracker_util.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="ThreadPoolExecutor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
