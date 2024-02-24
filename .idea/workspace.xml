@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="908eafa8-d3a4-4331-a5ae-56eaa6335d2e" name="Changes" comment="ThreadPoolExecutor">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tracker_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tracker_app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tracker_util.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tracker_util.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="pool_exec" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -56,7 +59,7 @@
     "Python.Tracker_util.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master"
+    "git-widget-placeholder": "Dev1"
   }
 }]]></component>
   <component name="RunManager">
@@ -196,7 +199,6 @@
     <MESSAGE value="fix" />
     <MESSAGE value="nothing much" />
     <MESSAGE value="threading" />
-    <MESSAGE value="Merge remote-tracking branch 'origin/Dev1' into Dev1&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;Tracker_app.py" />
     <MESSAGE value="ThreadPoolExecutor" />
     <option name="LAST_COMMIT_MESSAGE" value="ThreadPoolExecutor" />
   </component>
@@ -206,10 +208,6 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/mail_gmail.py</url>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Tracker_util.py</url>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
