@@ -1,10 +1,10 @@
-import concurrent.futures
 import os
 from selenium import webdriver
 from time import sleep
 from datetime import datetime
 import mail_gmail
 import yaml
+import threading
 
 
 def get_config_users(data):
@@ -19,15 +19,17 @@ today = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M')
 
 
 def user_iteration(user):
+    threads = []
     driver = webdriver.Chrome()
     driver.get(f'https://www.youtube.com/@{user}/playlists')
     details = driver.find_elements(by="id", value="details")
+    for detail in details:
+        t = threading.Thread(target=parse_details, args=(detail,user,))
+        t.start()
+        threads.append(t)
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
-        var = {executor.submit(parse_details, detail, user): detail for detail in details}
 
-
-def parse_details(detail, user):
+def parse_details(detail,user):
     new_user = is_new_user(user)
     line = detail.get_attribute("innerHTML").find("Updated")
     x = (detail.get_attribute("innerHTML")[152:252]).split("\" ")
@@ -37,16 +39,17 @@ def parse_details(detail, user):
 
     if new_user:
         with open(f"{parent_dir}\\{user}\\{playlist_name}_{today}", "w", encoding="utf-8") as file1:
-            write_playlist(link, file1)
+            write_playlist(link, user, file1)
 
     elif line != -1:
         with open(f"{parent_dir}\\{user}\\{playlist_name}_{today}_diff", "w", encoding="utf-8") as file2:
-            write_playlist(link, file2)
+            write_playlist(link, user, file2)
             file2.close()
         manage_playlist(user, playlist_name)
 
 
-def write_playlist(link, file):
+def write_playlist(link, user, file):
+    today = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M')
     driver2 = webdriver.Chrome()
     driver2.get(f'https://www.youtube.com/{link}')
     sleep(5)
@@ -70,7 +73,9 @@ def is_new_user(user_name):
 
 
 def manage_playlist(user_name, playlist_prefix):
+    today = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M')
     path = os.path.join(parent_dir, user_name)
+    dict_dates = {}
     list_dates = []
     files = [filename for filename in os.listdir(path) if filename.startswith(playlist_prefix)]
 
@@ -88,18 +93,20 @@ def manage_playlist(user_name, playlist_prefix):
         dict_dates = temp_dict
         list_dates.append(dict_dates)
 
-    new_list = sorted(list_dates, key=lambda dict_dates: dict_dates['time'], reverse=True)
+        # list_dates.append(temp)
+
+    newlist = sorted(list_dates, key=lambda dict_dates: dict_dates['time'], reverse=True)
 
     file_list = []
-    for i in range(len(new_list)):
+    for i in range(len(newlist)):
         file_list.append(
             [filename for filename in os.listdir(path) if
-             filename.startswith(f"{new_list[i]['play']}_{new_list[i]['time']}")])
+             filename.startswith(f"{newlist[i]['play']}_{newlist[i]['time']}")])
         if i > 1:
-            my_str = ' '.join((map(str, file_list[i])))
-            new_path = os.path.join(path, my_str)
-            if "diff" in new_path:
-                os.remove(new_path)
+            mystr = ' '.join((map(str, file_list[i])))
+            newpath = os.path.join(path, mystr)
+            if "diff" in newpath:
+                os.remove(newpath)
 
         i += 1
 
@@ -109,7 +116,7 @@ def manage_playlist(user_name, playlist_prefix):
 
 
 def write_diff_in_list(user_name, playlist_prefix, list1, list2):
-    today_date = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M')
+    today = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M')
     res = []
     f1 = open(
         f"{parent_dir}\\{user_name}\\_changeLog_{playlist_prefix}"
@@ -118,16 +125,16 @@ def write_diff_in_list(user_name, playlist_prefix, list1, list2):
         for song in list1:
             if song not in list2:
                 res.append(song)
-                line_to_file = f"added  {today_date} {song} "
+                linetofile = f"added  {today} {song} "
                 if res:
-                    f1.writelines(line_to_file)
+                    f1.writelines(linetofile)
     if len(list1) <= len(list2):
         for song in list2:
             if song not in list1:
                 res.append(song)
-                line_to_file = f" deleted {today} {song} "
+                linetofile = f" deleted {today} {song} "
                 if res:
-                    f1.writelines(line_to_file)
+                    f1.writelines(linetofile)
     f1.close()
     if res:
         print(f"found for : {user_name}")
@@ -137,12 +144,14 @@ def write_diff_in_list(user_name, playlist_prefix, list1, list2):
 def compare_lists(user_name, playlist_prefix, file1, file2):
     list1 = []
     list2 = []
-    with open(f"{parent_dir}\\{user_name}\\{file1[0]}", "r", encoding="utf-8") as f:
+    with open(f"{parent_dir}\\{user_name}\\{file1[0]}", "r"
+            , encoding="utf-8") as f:
         for line in f.readlines():
             list1.append(line)
 
-        with open(f"{parent_dir}\\{user_name}\\{file2[0]}", "r", encoding="utf-8") as f2:
-            for line in f2.readlines():
+        with open(f"{parent_dir}\\{user_name}\\{file2[0]}",
+                  "r", encoding="utf-8") as f:
+            for line in f.readlines():
                 list2.append(line)
 
     write_diff_in_list(user_name, playlist_prefix, list1, list2)
