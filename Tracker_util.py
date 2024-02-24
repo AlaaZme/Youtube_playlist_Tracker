@@ -1,7 +1,11 @@
+import concurrent.futures
 import os
 from selenium import webdriver
 from time import sleep
 from datetime import datetime
+
+from selenium.webdriver.support.wait import WebDriverWait
+
 import mail_gmail
 import yaml
 import threading
@@ -23,11 +27,15 @@ def user_iteration(user):
     driver = webdriver.Chrome()
     driver.get(f'https://www.youtube.com/@{user}/playlists')
     details = driver.find_elements(by="id", value="details")
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=2)as executor:
+        future_to_url = {executor.submit(parse_details, detail,user): detail for detail in details}
+'''
     for detail in details:
         t = threading.Thread(target=parse_details, args=(detail,user,))
         t.start()
         threads.append(t)
-
+'''
 
 def parse_details(detail,user):
     new_user = is_new_user(user)
@@ -52,6 +60,9 @@ def write_playlist(link, user, file):
     today = datetime.strftime(datetime.now(), '%Y-%m-%d-%H-%M')
     driver2 = webdriver.Chrome()
     driver2.get(f'https://www.youtube.com/{link}')
+
+
+
     sleep(5)
     items = driver2.find_elements(by="id", value="playlist-items")
     playlist = driver2.find_elements(by="xpath", value="//*[@id=\"video-title\"]")
